@@ -536,7 +536,7 @@ const  ganador = (id) => {
 }
 
 function redireccion() {
-    window.open("../../index.html", "_self");
+    window.open("https://ramirohagen.github.io/Its-The-Best/index.html", "_self");
 }
 
 function randomPuntaje(){
