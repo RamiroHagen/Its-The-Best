@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>It's The Best</title>
+    <link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
+
+    <!-- Meta SEO -->
+    <meta name="description"
+        content="Decidimos quien sera el mejor de todos los tiempos.">
+    <meta name="keywords"
+        content="Mundial Qatar 2022, Mundial, futbol, Messi, Argentina, Neymar, Ronaldo, pelota, Al-Rhila, deportes, futbol profesional, grupos, noticias Qatar, Campeones, Sedes Mundialistas, Estadios, copa del mundo">
+    <meta name="author" content="Ramiro Hagen">
+    <meta name="robot" content="index,follow">
+    <!-- Termina Meta SEO -->
+
+    <!-- Links -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Terminan Liks -->
+
+</head>
+
+
+<body>
+    <!--navbar-->
+
+    <nav class="navbar navbar-expand-lg" id="NavPrincipal">
+        <div class="container-fluid">
+            <a class="navbarItsTheBest" href="../index.html">
+                <img class="logo" src="../Multimedia/Principal/logo.png" alt="Logo Principal">
+                <p class="logoTexto">IT'S THE BEST</p>
+            </a>
+            <button class="navbar-toggler ml-auto custom-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto" id="Botonera">
+
+                    <li class="nav-item px-4">
+                        <a class="nav-link" href="../index.html">Aprende más</a>
+                    </li>
+
+                    <li class="nav-item px-4">
+                        <a class="nav-link" href="../index.html"> Contactanos</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- termina la navbar -->
+
+    <section class="fondo">
+
+        <div class="juego" id="contenedorJuego">
+
+            <div id="card1">
+            </div>
+            
+            <div class="cajaMenu" id="contenedorMenu">
+                <div>
+                <audio id="audio">
+                    <source src="../Multimedia/Sonidos/JazzHop.mp3" type="audio/mp3">
+                </audio>
+
+                <button id="playPauseBtn">
+                </button>
+                </div>
+            </div>
+
+            <div id="contenedorPrincipal">
+                <button class="BotonCandidatos" id="candidatos">
+                </button>
+                <button class="BotonCandidatos btnContinuar" id="continuar">
+                </button>
+
+            </div>
+
+            <div id="card2">
+            </div>
+
+            
+            <div style="position: absolute; width: 700px; height: 90px; margin-top: 428px; margin-left: 6px; border-radius: 1rem;
+            background: #ffffff00;" id="contenedorCandidatos">
+                <div id="uno"></div>
+                <div id="dos"></div>
+                <div id="tres"></div>
+                <div id="cuatro"></div>
+            </div>
+        </div>
+
+        <div class="cardTres" id="card3">
+        </div>
+
+        <div class="cardCuatro" id="card4">
+        </div>
+
+        <div class=" d-flex justify-content-center align-items-center" id="cuadroFinal">
+            <div class="cardGanador" id="cardFinal">
+                <button class="BotonCandidatos btnContinuar" id="registrarUsuario">
+                </button>
+                <div id="puntaje">
+                </div>
+            </div>
+        </div>
+
+        <div id="contenedorFinal">
+            <div id="tiempo">
+            </div>
+        </div>
+
+    </section>
+
+    <footer class="footer">
+        <div class="d-flex justify-content-center align-items-center">
+            <a href="https://www.instagram.com/" target="_blank"><img src="../Multimedia/Principal/instagram.png" alt="" width="35px" height="35px" style="margin: 11px"></a>
+            <a href="https://www.youtube.com/" target="_blank"><img src="../Multimedia/Principal/youtube.png" alt="" width="40px" height="43px" style="margin: 11px"></a>
+        </div>
+        <div class="d-flex justify-content-center align-items-end">
+            <h6 class="leterFooter">Todos los derechos reservados - © It´s the Best <br> Ramiro Hagen - 2023
+            </h6>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/arrays.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>
