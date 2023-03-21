@@ -11,6 +11,7 @@ const contenedorJuego = document.getElementById("contenedorJuego");
 const contenedorPrincipal = document.getElementById("contenedorPrincipal");
 const candidatos = document.getElementById("candidatos");
 const continuar = document.getElementById("continuar");
+const imgFinEtapa = document.getElementById("imgFinEtapa")
 const contenedorCandidatos = document.getElementById("contenedorCandidatos");
 const contenedorFinal = document.getElementById("contenedorFinal")
 const audio = document.getElementById("audio");
@@ -21,7 +22,7 @@ const arrayGanador = [];
 
 //////////////////////////////////////////////////////////CARDS//////////////////////////////////////////////////////////
 
-const mostrarElementos = (Elementos) => {
+const mostrarElementos = (Elementos, value) => {
     card1.classList.add();
     card1.innerHTML = `
                         <div>
@@ -38,13 +39,15 @@ const mostrarElementos = (Elementos) => {
     const boton1 = document.getElementById(`boton${Elementos.id}`);
     boton1.addEventListener("click", () => {
         contadorRondas();
-        cambiarElemento1(Elementos.id);
-        botonCandidato(Elementos.repeticiones);
+        cambiarElemento1(Elementos.id, value);
+        botonCandidato(Elementos.repeticiones, value);
+        return value;
     })
 }
-    
 
-const mostrarElementos2 = (Elementos) => {
+const mostrarElementos2 = (Elementos, value) => {
+    console.log(value);
+    console.log(Elementos.id);
     card2.classList.add();
     card2.innerHTML = `
                         <div>
@@ -61,8 +64,9 @@ const mostrarElementos2 = (Elementos) => {
     const boton2 = document.getElementById(`boton${Elementos.id}`);
     boton2.addEventListener("click", () => {
         contadorRondas();
-        cambiarElemento2(Elementos.id);
-        botonCandidato(Elementos.repeticiones);   
+        cambiarElemento2(Elementos.id, value);
+        botonCandidato(Elementos.repeticiones, value);  
+        return value; 
     })
 }
 
@@ -73,9 +77,9 @@ const mostrarCandidato = (Elementos) => {
     card3.innerHTML = `
                         <div>
                             <button class= "cardElementos" id= "candidato${Elementos.id}">
-                                <div class= "transparentTitulos"></div>
+                                <div class="transparentTitulosGanador"></div>
                                 <img src= "${Elementos.img}" class="imgElementos" alt="${Elementos.nombre}">
-                                <h3 class= "textoElementos">${(Elementos.nombre.toUpperCase())}</h3>
+                                <h3 class= "textoElementos" style="color: #ffffff">${(Elementos.nombre.toUpperCase())}</h3>
                             </button>
                         </div>
                     `
@@ -96,9 +100,9 @@ const mostrarCandidato2 = (Elementos) => {
     card4.innerHTML = `
                         <div>
                             <button class= "cardElementos" id= "candidato${Elementos.id}">
-                                <div class= "transparentTitulos"></div>
+                                <div class="transparentTitulosGanador"></div>
                                 <img src= "${Elementos.img}" class="imgElementos" alt="${Elementos.nombre}">
-                                <h3 class= "textoElementos">${(Elementos.nombre.toUpperCase())}</h3>
+                                <h3 class= "textoElementos" style="color: #ffffff">${(Elementos.nombre.toUpperCase())}</h3>
                             </button>
                         </div>
                     `
@@ -114,11 +118,11 @@ const mostrarCandidato2 = (Elementos) => {
 }
 
 
-////////////////////////////////////////////////////EJECUCION/////////////////////////////////////////////////////////////////////
+////////////////////////////////////////EJECUCION////////////////////////////////////////////////////////
 
 menu();
 
-////////////////////////////////////////////////////FUNCIONES//////////////////////////////////////////////////////////////////////
+////////////////////////////////////////FUNCIONES////////////////////////////////////////////////////////
 
 function menu(){
     const contenedorMenu = document.getElementById("contenedorMenu");
@@ -171,37 +175,7 @@ function menu(){
     const botonAcciones = document.getElementById(`botonJugar`);
     const botonFFA = document.getElementById(`botonFFA`);
         botonAcciones.addEventListener("click", () => {
-        const categorias = document.getElementById('categorias');
-        const categoriaSeleccionada = categorias.value;
-            if (categoriaSeleccionada === 'Seleccione una categoría') {
-                (async () => {
-                    await Swal.fire({                    
-                      title: 'UPS..',
-                      text:'Debes seleccionar una categoria para comenzar el juego.',
-                      color: 'aliceblue',
-                      background: '#50236B',
-                      confirmButtonText: 'Aceptar',
-                    })
-                    })()
-            }else if (categoriaSeleccionada === 'Comida y Bebida') {
-                console.log(categoriaSeleccionada);
-                contenedorJuego.removeChild(contenedorMenu);
-                mostrarContenedorJuego();
-                const value = arrayComidaBebida;
-                primeraEtapa(value);
-            }else if (categoriaSeleccionada === 'Acciones') {
-                console.log(categoriaSeleccionada);
-                contenedorJuego.removeChild(contenedorMenu);
-                mostrarContenedorJuego();
-                const value = arrayAcciones;
-                primeraEtapa(value);
-            }else if (categoriaSeleccionada === 'Musica') {
-                console.log(categoriaSeleccionada);
-                contenedorJuego.removeChild(contenedorMenu);
-                mostrarContenedorJuego();
-                const value = arrayMusica;
-                primeraEtapa(value);
-            }   
+            accionMenu() 
         })
         
         botonFFA.addEventListener("click", () => {
@@ -213,35 +187,64 @@ function menu(){
         })
 }
 
+function accionMenu(){
+    const categorias = document.getElementById('categorias');
+    const categoriaSeleccionada = categorias.value;
+        if (categoriaSeleccionada === 'Seleccione una categoría') {
+            debesSeleccionarAlert();
+        }else if (categoriaSeleccionada === 'Comida y Bebida') {
+            comienzaJuego()
+            const value = arrayComidaBebida;
+            primeraEtapa(value);
+        }else if (categoriaSeleccionada === 'Acciones') {
+            comienzaJuego()
+            const value = arrayAcciones;
+            primeraEtapa(value);
+        }else if (categoriaSeleccionada === 'Musica') {
+            comienzaJuego()
+            const value = arrayMusica;
+            primeraEtapa(value);
+        }  
+}
+function comienzaJuego(){
+    contenedorJuego.removeChild(contenedorMenu);
+    mostrarContenedorJuego();
+}
+
+function debesSeleccionarAlert(){
+    (async () => {
+        await Swal.fire({                    
+          title: 'UPS..',
+          text:'Debes seleccionar una categoria para comenzar el juego.',
+          color: 'aliceblue',
+          background: '#50236B',
+          confirmButtonText: 'Aceptar',
+        })
+        })()
+}
+
 function primeraEtapa(value) {
     let iterar = randomArray(value);
     let iterar2 = randomArray(value);
-    mostrarElementos(iterar);
-    mostrarElementos2(iterar2);
+    mostrarElementos(iterar, value);
+    mostrarElementos2(iterar2, value);
 }
 
-
-const  cambiarElemento1 = (id) => {
-    const elementoDefinido = arrayAcciones.find((Elementos) => Elementos.id === id);
+const  cambiarElemento1 = (id, value) => {
+    console.log(value);
+    const elementoDefinido = value.find((Elementos) => Elementos.id === id);
     elementoDefinido.repeticiones++; 
-    let cambiar = randomArray(arrayAcciones);
-    if(cambiar == elementoDefinido){
-        cambiarElemento1(elementoDefinido.id);
-    }
-    mostrarElementos2(cambiar);  
+    let cambiar = randomArray(value);
+    mostrarElementos2(cambiar, value);  
 }
 
-
-const  cambiarElemento2 = (id) => {
-    const elementoDefinido = arrayAcciones.find((Elementos) => Elementos.id === id);
+const  cambiarElemento2 = (id, value) => {
+    console.log(value);
+    const elementoDefinido = value.find((Elementos) => Elementos.id === id);
     elementoDefinido.repeticiones++;    
-    let cambiar = randomArray(arrayAcciones);
-    if(cambiar == elementoDefinido){
-        cambiarElemento1(elementoDefinido.id);
-    }
-    mostrarElementos(cambiar);
-    mostrarElementos2(elementoDefinido);
-
+    let cambiar = randomArray(value);
+    mostrarElementos(cambiar, value);
+    mostrarElementos2(elementoDefinido, value);
 }
 
 function randomArray(value){
@@ -286,7 +289,7 @@ function mostrarContenedorJuego(){
                                             </audio>
 
                                             <button class="tamañoPlayMuteJuego" id="playPauseBtn" onclick="playPause()">
-                                                <img width="35px" height="35px" src="../Multimedia/Principal/volume-play.png" alt="Play y Mute Musica">
+                                                <img width="25px" height="25px" src="../Multimedia/Principal/volume-play.png" alt="Play y Mute Musica">
                                             </button>
                                         </div>
 
@@ -301,43 +304,44 @@ function mostrarContenedorJuego(){
 }
 
 
-const botonCandidato = (repeticiones) => {
-const accionBotonCandidatos = arrayAcciones.find((Elementos) => Elementos.repeticiones === repeticiones);
+const botonCandidato = (repeticiones, value) => {
+const accionBotonCandidatos = value.find((Elementos) => Elementos.repeticiones === repeticiones);
 
     if (accionBotonCandidatos.repeticiones >= 3){
         candidatos.innerHTML = `<h4 class="titulosSmall"> CANDIDATO </h4>`
         contenedorPrincipal.appendChild(candidatos);
         candidatos.addEventListener("click", () => {
-        seleccionCandidato(accionBotonCandidatos.id);
+        seleccionCandidato(accionBotonCandidatos.id, value);
         })  
     }
 
     else{     
 		contenedorPrincipal.removeChild(candidatos);
         reiniciarRepe = 0;
-        arrayAcciones.forEach(Elementos => {
+        value.forEach(Elementos => {
         Elementos.repeticiones = reiniciarRepe;
         })
     }
 }
 
-const seleccionCandidato = (id) => {
-    const elementoDefinido = arrayAcciones.find((Elementos) => Elementos.id === id);
+const seleccionCandidato = (id, value) => {
+    const elementoDefinido = value.find((Elementos) => Elementos.id === id);
     if(elementoDefinido == undefined){
     }else if(elementoDefinido.id === id && elementoDefinido.repeticiones >= 3){
-    let indice = arrayAcciones.indexOf(elementoDefinido);
-    arrayAcciones.splice (indice, 1);
-    iteracionNueva()
+    let indice = value.indexOf(elementoDefinido);
+    value.splice (indice, 1);
+    iteracionNueva(value);
     contenedorPrincipal.removeChild(candidatos);
     guardarCandidato(elementoDefinido);
+    
     }
 }
 
-function iteracionNueva() {
-    const iterarUno = randomArray(arrayAcciones);
-    const iterarDos = randomArray(arrayAcciones);
-    mostrarElementos(iterarUno);
-    mostrarElementos2(iterarDos);
+function iteracionNueva(value) {
+    const iterarUno = randomArray(value);
+    const iterarDos = randomArray(value);
+    mostrarElementos(iterarUno, value);
+    mostrarElementos2(iterarDos, value);
 }
 
 function guardarCandidato(elementoDefinido) {
@@ -382,6 +386,13 @@ function guardarCandidato(elementoDefinido) {
 function verificar() {
     if (listaCandidatos.length >= 4){
         continuar.innerHTML = `<h4 class="titulosSmall"> CONTINUAR </h4>`
+        imgFinEtapa.innerHTML = `<div class="cardEspera" style=" margin-left: -435px; margin-top: -264px;">
+                                    <img src="../Multimedia/Principal/vs.png" alt="">
+                                </div>
+                                <div class="cardEspera" style="margin-top: -264px;">
+                                    <img src="../Multimedia/Principal/vs.png" alt="">
+                                </div>`
+        contenedorJuego.append(imgFinEtapa);
         contenedorJuego.append(continuar);
         contenedorPrincipal.removeChild(contador)
         const botonContinuar = document.getElementById(`continuar`);
@@ -393,6 +404,36 @@ function verificar() {
             })
         })  
     }
+}
+
+function segundaEtapa(){
+    iteracionCandidatos();
+    contenedorJuego.innerHTML = `<div class="cuadroFinal">
+                                        <div class="d-flex justify-content-center">
+                                            <img class="logoCENTROFinal" src="../Multimedia/Principal/corona.png" alt="">
+                                        </div>
+
+                                        <div class="esMejorQue">
+                                            <h3>ES MEJOR QUE..?</h3>
+                                        </div>
+
+                                        <div>
+                                            <audio id="audio">
+                                                <source src="../Multimedia/JazzHop.mp3" type="audio/mp3">
+                                            </audio>
+
+                                            <button class="playMuteFinal" id="playPauseBtn" onclick="playPause()">
+                                                <img width="25px" height="25px" src="../Multimedia/Principal/volume-play.png" alt="Play y Mute Musica">
+                                            </button>
+                                        </div> 
+                                    </div>
+                                    
+                                    <div class="d-flex justify-content-center align-items-center cajaFinal">
+                                        <img class="logo" src="../Multimedia/Principal/logo.png" alt="Logo Principal">
+                                        <p class="logoTexto">IT'S THE BEST</p>
+                                    </div>
+                                `
+    contenedorJuego.appendChild(contenedorFinal);
 }
 
 //LocalStorage
@@ -412,7 +453,6 @@ if(reproduccion == 1){
     valor = 0;
     playPause();
 }
-/////////////
 
 function actualizarTiempo() {
     document.getElementById("tiempo").innerHTML =`<div class="cuadroTiempo">0${segundos}
@@ -473,6 +513,10 @@ function final(){
     mostrarCandidato(cambiar);
     mostrarCandidato2(cambiar2);
     segundos = 9;
+    ////////////////////////////
+    if(segundos == 1){
+        alert("o no");
+    }
     }
 }
 
@@ -495,7 +539,7 @@ const  ganador = (id) => {
                                 <button class= "cardElementosGanador" id= "candidato${elementoDefinido.id}">
                                     <div class= "transparentTitulosGanador"></div>
                                     <img src= "${elementoDefinido.img}" class="imgElementosGanador" alt="${elementoDefinido.nombre}">
-                                    <h3 class= "textoElementos">${(elementoDefinido.nombre.toUpperCase())}</h3>
+                                    <h3 class= "textoElementos" style="color: #ffffff">${(elementoDefinido.nombre.toUpperCase())}</h3>
                                 </button>
 
                                 <div class="d-flex justify-contet-center align-items-center">
@@ -535,10 +579,6 @@ const  ganador = (id) => {
     }
 }
 
-function redireccion() {
-    window.open("https://ramirohagen.github.io/Its-The-Best/index.html", "_self");
-}
-
 function randomPuntaje(){
     let puntos = Math.random()* 8000 | 1000;
     const puntaje = document.getElementById("puntaje");
@@ -550,33 +590,6 @@ function randomPuntaje(){
     cuadroFinal.append(puntaje);
 }
 
-function segundaEtapa(){
-    iteracionCandidatos();
-    contenedorJuego.innerHTML = `<div class="cuadroFinal">
-                                        <div class="d-flex justify-content-center">
-                                            <img class="logoCENTROFinal" src="../Multimedia/Principal/corona.png" alt="">
-                                        </div>
-
-                                        <div class="esMejorQue">
-                                            <h3>ES MEJOR QUE..?</h3>
-                                        </div>
-
-                                        <div>
-                                            <audio id="audio">
-                                                <source src="../Multimedia/JazzHop.mp3" type="audio/mp3">
-                                            </audio>
-
-                                            <button class="playMuteFinal" id="playPauseBtn" onclick="playPause()">
-                                                <img width="35px" height="35px" src="../Multimedia/Principal/volume-play.png" alt="Play y Mute Musica">
-                                            </button>
-                                        </div> 
-                                    </div>
-                                    
-                                    <div class="d-flex justify-content-center align-items-center cajaFinal">
-                                        <img class="logo" src="../Multimedia/Principal/logo.png" alt="Logo Principal">
-                                        <p class="logoTexto">IT'S THE BEST</p>
-                                    </div>
-                                `
-    contenedorJuego.appendChild(contenedorFinal);
+function redireccion() {
+    window.open("https://ramirohagen.github.io/Its-The-Best/index.html", "_self");
 }
-

@@ -129,7 +129,7 @@ body{
     width: 54%;
     height: 100vh;
     top: 5px;
-    right: 0;
+    margin-left: 581.48px;
     
 }
 
@@ -159,7 +159,6 @@ body{
     height: 60px;
     margin-bottom: 20px;
     border-color: transparent;
-
 }
 
 .botonSecundarios{
@@ -266,7 +265,7 @@ body{
     background: linear-gradient(transparent 5%, #ffffff);;
     border-radius: 1rem;
     margin-top: -210px;
-    margin-left: 468px;
+    margin-left: 469px;
 }
 
 .cajaMenu{
@@ -306,8 +305,8 @@ body{
     position: absolute;
     margin-left: 300px;
     margin-top: 50px;
-    width: 43px;
-    height: 43px;
+    width: 45px;
+    height: 45px;
     background: linear-gradient(15deg, rgba(71,244,251,1) 0%, rgba(120,123,241,1) 44%, rgba(204,1,255,1) 84%, rgba(232,0,227,1) 100%);
     border-radius: 1rem;
     border-color: transparent;
@@ -317,14 +316,26 @@ body{
 
 .tamañoPlayMuteJuego{
     position: absolute;
-    margin-left: 44.1vw;
+    margin-left: 44.4vw;
     margin-top: 17.5vh;
-    width: 48px;
-    height: 48px;
+    width: 43px;
+    height: 43px;
     background: linear-gradient(15deg, rgba(71,244,251,1) 0%, rgba(120,123,241,1) 44%, rgba(204,1,255,1) 84%, rgba(232,0,227,1) 100%);
     border-radius: 1rem;
     border-color: transparent;
     color: transparent;
+}
+
+.playMuteFinal{
+    position: absolute;
+    margin-left: 7.9vw;
+    margin-top: 25.4vh;
+    width: 43px;
+    height: 43px;
+    background: linear-gradient(15deg, rgba(71,244,251,1) 0%, rgba(120,123,241,1) 44%, rgba(204,1,255,1) 84%, rgba(232,0,227,1) 100%);
+    border-radius: 1rem;
+    border-color: transparent;
+    color: transparent;   
 }
 
 .boxBotonesMenu{
@@ -365,6 +376,19 @@ body{
     border-radius: 2rem;
     margin-right: 120px;
     margin-left: 85px;
+}
+
+.cardEspera{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22.1vw;
+    height: 402px;
+    border-radius: 1rem;
+    margin-left: -1023.5px;
+    background-color: rgb(228, 228, 228);
+    z-index: 2;
 }
 
 .imgElementos{
@@ -551,18 +575,6 @@ body{
     border-color: linear-gradient(15deg, rgba(71,244,251,1) 0%, rgba(120,123,241,1) 44%, rgba(204,1,255,1) 84%, rgba(232,0,227,1) 100%);
 }
 
-.playMuteFinal{
-    position: absolute;
-    margin-left: 7.5vw;
-    margin-top: 27.1vh;
-    width: 48px;
-    height: 48px;
-    background: linear-gradient(15deg, rgba(71,244,251,1) 0%, rgba(120,123,241,1) 44%, rgba(204,1,255,1) 84%, rgba(232,0,227,1) 100%);
-    border-radius: 1rem;
-    border-color: transparent;
-    color: transparent;   
-}
-
 .cuadroTiempo{
     position: absolute;
     font-family: FuentePrincipal;
@@ -589,7 +601,7 @@ body{
 .cardTres{
     position: absolute;
     margin-top: -420px;
-    margin-left: -600px;
+    margin-left: -588.5px;
 }
 
 .cardCuatro{
