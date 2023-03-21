@@ -12,7 +12,7 @@ class Elementos {
 //////////////////////////////////////////////CREACION DE OBJETOS/////////////////////////////////////////////////
 
 const elemento1 = new Elementos("Bostezar", 1, "../Multimedia/Objetos/Acciones/bostezar.webp");
-const elemento2 = new Elementos("Cantar", 2, "../Multimedia/Objetos/Acciones/Cantar.webp");
+const elemento2 = new Elementos("Cantar", 2, "../Multimedia/Objetos/Acciones/cantar.webp");
 const elemento3 = new Elementos("Chatear", 3, "../Multimedia/Objetos/Acciones/Chatear.webp");
 const elemento4 = new Elementos("Cocer", 4, "../Multimedia/Objetos/Acciones/cocer.webp");
 const elemento5 = new Elementos("Cocinar", 5, "../Multimedia/Objetos/Acciones/cocinar.webp");
@@ -155,7 +155,7 @@ const elemento135 = new Elementos("Ciro y Los Persas", 135, "../Multimedia/Objet
 const elemento136 = new Elementos("Cuarteto", 136, "../Multimedia/Objetos/Musica/cuarteto.webp");
 const elemento137 = new Elementos("Cumbia", 137, "../Multimedia/Objetos/Musica/cumbia.webp");
 const elemento138 = new Elementos("Daddy Yankee", 138, "../Multimedia/Objetos/Musica/daddyYankee.webp");
-const elemento139 = new Elementos("Disco", 139, "../Multimedia/Objetos/Musica/Disco.webp");
+const elemento139 = new Elementos("Disco", 139, "../Multimedia/Objetos/Musica/disco.webp");
 const elemento140 = new Elementos("Don Omar", 140, "../Multimedia/Objetos/Musica/donOmar.webp");
 const elemento141 = new Elementos("Drake", 141, "../Multimedia/Objetos/Musica/drake.webp");
 const elemento142 = new Elementos("Dua Lipa", 142, "../Multimedia/Objetos/Musica/duaLipa.webp");
