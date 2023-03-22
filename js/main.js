@@ -46,8 +46,6 @@ const mostrarElementos = (Elementos, value) => {
 }
 
 const mostrarElementos2 = (Elementos, value) => {
-    console.log(value);
-    console.log(Elementos.id);
     card2.classList.add();
     card2.innerHTML = `
                         <div>
@@ -231,7 +229,6 @@ function primeraEtapa(value) {
 }
 
 const  cambiarElemento1 = (id, value) => {
-    console.log(value);
     const elementoDefinido = value.find((Elementos) => Elementos.id === id);
     elementoDefinido.repeticiones++; 
     let cambiar = randomArray(value);
@@ -239,7 +236,6 @@ const  cambiarElemento1 = (id, value) => {
 }
 
 const  cambiarElemento2 = (id, value) => {
-    console.log(value);
     const elementoDefinido = value.find((Elementos) => Elementos.id === id);
     elementoDefinido.repeticiones++;    
     let cambiar = randomArray(value);
@@ -346,8 +342,6 @@ function iteracionNueva(value) {
 
 function guardarCandidato(elementoDefinido) {
     listaCandidatos.push(elementoDefinido);
-    console.log(listaCandidatos);
-    console.log(listaCandidatos.length);
     if (listaCandidatos.length === 1){
         const uno = document.getElementById("uno");
         uno.innerHTML = `<div class="candidatoUno">
@@ -463,6 +457,8 @@ function actualizarTiempo() {
         if(listaFinal.length == 2){
             final();
             ganador();
+                listaFinal[0].repeticiones = 1;
+                listaFinal[1].repeticiones = 1;
         }
     }else{
         segundos--;
@@ -512,11 +508,6 @@ function final(){
     let cambiar2 = listaFinal[1];
     mostrarCandidato(cambiar);
     mostrarCandidato2(cambiar2);
-    segundos = 9;
-    ////////////////////////////
-    if(segundos == 1){
-        alert("o no");
-    }
     }
 }
 
